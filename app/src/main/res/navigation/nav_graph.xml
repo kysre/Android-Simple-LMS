@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/FirstFragment">
+
+    <fragment
+        android:id="@+id/FirstFragment"
+        android:name="edu.sharif.hw_1.FirstFragment"
+        android:label="@string/first_fragment_label"
+        tools:layout="@layout/fragment_first">
+
+        <action
+            android:id="@+id/action_FirstFragment_to_registerProfessor"
+            app:destination="@id/registerProfessor" />
+        <action
+            android:id="@+id/action_FirstFragment_to_registerStudent"
+            app:destination="@id/registerStudent" />
+        <action
+            android:id="@+id/action_FirstFragment_to_login"
+            app:destination="@id/login" />
+    </fragment>
+    <fragment
+        android:id="@+id/registerProfessor"
+        android:name="edu.sharif.hw_1.RegisterProfessor"
+        android:label="fragment_registerprofessor"
+        tools:layout="@layout/fragment_register_professor">
+        <action
+            android:id="@+id/action_registerProfessor_to_login"
+            app:destination="@id/login" />
+    </fragment>
+    <fragment
+        android:id="@+id/registerStudent"
+        android:name="edu.sharif.hw_1.RegisterStudent"
+        android:label="fragment_register_student"
+        tools:layout="@layout/fragment_register_student">
+        <action
+            android:id="@+id/action_registerStudent_to_login"
+            app:destination="@id/login" />
+    </fragment>
+    <fragment
+        android:id="@+id/login"
+        android:name="edu.sharif.hw_1.Login"
+        android:label="fragment_login"
+        tools:layout="@layout/fragment_login">
+        <action
+            android:id="@+id/action_login_to_studentMenu"
+            app:destination="@id/studentMenu" />
+        <action
+            android:id="@+id/action_login_to_professorMenu"
+            app:destination="@id/professorMenu" />
+    </fragment>
+    <fragment
+        android:id="@+id/studentMenu"
+        android:name="edu.sharif.hw_1.StudentMenu"
+        android:label="fragment_student_menu"
+        tools:layout="@layout/fragment_student_menu">
+        <action
+            android:id="@+id/action_student_menu_to_course_fragment"
+            app:destination="@id/studentCourseFragment2" />
+        <action
+            android:id="@+id/action_studentMenu_to_login"
+            app:destination="@id/login" />
+    </fragment>
+    <fragment
+        android:id="@+id/professorMenu"
+        android:name="edu.sharif.hw_1.ProfessorMenu"
+        android:label="fragment_professor_menu"
+        tools:layout="@layout/fragment_professor_menu">
+        <action
+            android:id="@+id/action_professorMenu_to_professorCourseFragment"
+            app:destination="@id/professorCourseFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/studentCourseFragment2"
+        android:name="edu.sharif.hw_1.StudentCourseFragment"
+        android:label="fragment_student_course"
+        tools:layout="@layout/fragment_student_course">
+        <argument
+            android:name="courseName"
+            app:argType="string" />
+        <action
+            android:id="@+id/action_student_course_to_homework_fragment"
+            app:destination="@id/studentHomeworkFragment" />
+        <action
+            android:id="@+id/action_studentCourseFragment2_to_studentMenu"
+            app:destination="@id/studentMenu" />
+    </fragment>
+    <fragment
+        android:id="@+id/studentHomeworkFragment"
+        android:name="edu.sharif.hw_1.StudentHomeworkFragment"
+        android:label="fragment_student_homework"
+        tools:layout="@layout/fragment_student_homework">
+        <argument
+            android:name="courseName"
+            app:argType="string" />
+        <argument
+            android:name="homeworkName"
+            app:argType="string" />
+        <action
+            android:id="@+id/action_studentHomeworkFragment_to_studentCourseFragment"
+            app:destination="@id/studentCourseFragment2" />
+    </fragment>
+    <fragment
+        android:id="@+id/professorCourseFragment"
+        android:name="edu.sharif.hw_1.ProfessorCourseFragment"
+        android:label="fragment_professor_course"
+        tools:layout="@layout/fragment_professor_course">
+        <argument
+            android:name="courseName"
+            app:argType="string" />
+        <action
+            android:id="@+id/action_professorCourseFragment_to_professorMenu"
+            app:destination="@id/professorMenu" />
+        <action
+            android:id="@+id/action_professorCourseFragment_to_professorHomeworkFragment"
+            app:destination="@id/professorHomeworkFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/professorHomeworkFragment"
+        android:name="edu.sharif.hw_1.ProfessorHomeworkFragment"
+        android:label="fragment_professor_homework"
+        tools:layout="@layout/fragment_professor_homework">
+        <action
+            android:id="@+id/action_professorHomeworkFragment_to_professorCourseFragment"
+            app:destination="@id/professorCourseFragment" />
+        <argument
+            android:name="courseName"
+            app:argType="string" />
+        <argument
+            android:name="homeworkName"
+            app:argType="string" />
+        <action
+            android:id="@+id/action_professorHomeworkFragment_to_professorMarkingFragment"
+            app:destination="@id/professorMarkingFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/professorMarkingFragment"
+        android:name="edu.sharif.hw_1.ProfessorMarkingFragment"
+        android:label="fragment_professor_marking"
+        tools:layout="@layout/fragment_professor_marking">
+        <action
+            android:id="@+id/action_professorMarkingFragment_to_professorHomeworkFragment"
+            app:destination="@id/professorHomeworkFragment" />
+        <argument
+            android:name="courseName"
+            app:argType="string" />
+        <argument
+            android:name="homeworkName"
+            app:argType="string" />
+        <argument
+            android:name="studentName"
+            app:argType="string" />
+    </fragment>
+</navigation>
