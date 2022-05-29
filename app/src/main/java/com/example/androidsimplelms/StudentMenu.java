@@ -55,7 +55,7 @@ public class StudentMenu extends Fragment implements RecyclerViewAdapter.SelectL
         courseRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         listItems = new ArrayList<>();
         listItems.addAll(Controller.getCourseListItems());
-        adapter = new edu.sharif.hw_1.RecyclerViewAdapter(getActivity(), listItems, this);
+        adapter = new RecyclerViewAdapter(getActivity(), listItems, this);
         courseRecyclerView.setAdapter(adapter);
 
         joinSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
