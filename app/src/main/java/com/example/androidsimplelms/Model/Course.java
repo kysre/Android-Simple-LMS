@@ -25,6 +25,14 @@ public class Course {
         students = new ArrayList<>();
     }
 
+    public static ArrayList<Course> getAllCourses() {
+        return courses;
+    }
+
+    public static void setRecentId(int recentId) {
+        Course.recentId = recentId;
+    }
+
     public static Course getCourseByName(String name) {
         for (Course course : courses) {
             if (course.getName().equals(name)) {
@@ -43,8 +51,13 @@ public class Course {
         return null;
     }
 
-    public static ArrayList<Course> getAllCourses() {
-        return courses;
+    public static void addToCourses(Course courseToAdd) {
+        for (Course course : courses) {
+            if (course.equals(courseToAdd)) {
+                return;
+            }
+        }
+        courses.add(courseToAdd);
     }
 
     public boolean doesHomeworkExist(String name) {
@@ -98,7 +111,16 @@ public class Course {
         return students;
     }
 
-    public static void addToCourses(Course course) {
-        courses.add(course);
+    @Override
+    public boolean equals(Object obj) {
+        if (obj != null) {
+            if (obj instanceof Course) {
+                Course course = (Course) obj;
+                if (course.getId() == this.id) {
+                    return true;
+                }
+            }
+        }
+        return false;
     }
 }

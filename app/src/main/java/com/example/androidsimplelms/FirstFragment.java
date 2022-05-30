@@ -49,6 +49,9 @@ public class FirstFragment extends Fragment {
         Type type = new TypeToken<ArrayList<User>>() {
         }.getType();
         ArrayList<User> users = yaGson.fromJson(data, type);
+        if (users == null) {
+            users = new ArrayList<>();
+        }
         Controller.initializer(users);
 
         binding.RegisterButton.setOnClickListener(new View.OnClickListener() {
